@@ -6,7 +6,6 @@ services:
   postgres:
     image: "postgres:latest"
     deploy:
-      mode: global
       replicas: 2
       placement:
         constraints:
