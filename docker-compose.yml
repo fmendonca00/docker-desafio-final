@@ -1,0 +1,59 @@
+version: "3.8"
+volumes:
+  postgis_data:
+
+services:
+  postgres:
+    image: "postgres:latest"
+    deploy:
+      mode: global
+      replicas: 2
+      placement:
+        constraints:
+          - "node.role==worker"
+    environment:
+      POSTGRES_DB: app
+      POSTGRES_USER: target
+      POSTGRES_PASSWORD: target
+    volumes:
+      - postgis_data:/var/lib/postgresql/data/
+    networks:
+      - net-pgadmin
+  
+  pgadmin:
+    image: dpage/pgadmin4
+    deploy:
+      replicas: 3
+      placement:
+        constraints:
+          - "node.hostname!=manager1"
+          - "node.hostname!=manager2"
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=felipe.araujo@targetso.com
+      - PGADMIN_DEFAULT_PASSWORD=Target2024
+    ports:
+      - "80:80"
+    networks:
+    - net-pgadmin
+    depends_on:
+      - postgres
+
+  nginx:
+    image: "nginx:latest"
+    deploy:
+      replicas: 2
+      placement:
+        constraints:
+          - "node.role==manager"
+    ports:
+      - 80:80
+    networks:
+      - net-nginx
+    depends_on:
+      - postgres
+
+
+
+networks:
+  net-pgadmin:
+  net-nginx:
