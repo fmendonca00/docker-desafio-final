@@ -53,4 +53,6 @@ services:
 
 networks:
   net-pgadmin:
+    driver: overlay
   net-nginx:
+    driver: overlay
