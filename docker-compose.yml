@@ -45,7 +45,7 @@ services:
         constraints:
           - "node.role==manager"
     ports:
-      - 80:8080
+      - 8080:80
     networks:
       - net-nginx
     depends_on:
