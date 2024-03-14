@@ -35,6 +35,14 @@ Para remover a plataforma:
 docker stack rm app
 ```
 
+Atualizar o código e enviar para o repositório remoto:
+
+```bash
+git add .
+git commit -m "update"
+git push origin main
+```
+
 Atualizar o repositório local e posteriormente executar novo deploy da plataforma:
 
 ```bash
