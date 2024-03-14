@@ -22,7 +22,7 @@ services:
       - net-nginx
   
   pgadmin:
-    image: dpage/pgadmin4
+    image: "dpage/pgadmin4:6.21"
     deploy:
 #      replicas: 3
       placement:
@@ -31,9 +31,9 @@ services:
 #          - "node.hostname!=manager1"
 #          - "node.hostname!=manager2"
     environment:
-      - PGADMIN_DEFAULT_EMAIL=felipe.araujo@targetso.com
-      - PGADMIN_DEFAULT_PASSWORD=Target2024
-#      - PGADMIN_CONFIG_WTF_CSRF_CHECK_DEFAULT=False
+      - PGADMIN_DEFAULT_EMAIL: felipe.araujo@targetso.com
+      - PGADMIN_DEFAULT_PASSWORD: Target2024
+#      - PGADMIN_CONFIG_WTF_CSRF_CHECK_DEFAULT: False
     ports:
       - "8080:80"
     networks:
@@ -58,7 +58,7 @@ services:
       - postgres
 
   traefik:
-    image: traefik:latest
+    image: "traefik:latest"
     deploy:
       replicas: 3
       placement:
