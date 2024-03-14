@@ -6,11 +6,10 @@ services:
   postgres:
     image: "postgres:latest"
     deploy:
-#      replicas: 2
+      replicas: 2
       placement:
         constraints:
-          - "node.hostname==worker1"
-#          - "node.role==worker"
+          - "node.role==worker"
     environment:
       POSTGRES_DB: app
       POSTGRES_USER: target
@@ -24,16 +23,15 @@ services:
   pgadmin:
     image: "dpage/pgadmin4:6.21"
     deploy:
-#      replicas: 3
+      replicas: 3
       placement:
         constraints:
-          - "node.hostname==worker1"
-#          - "node.hostname!=manager1"
-#          - "node.hostname!=manager2"
+          - "node.hostname!=manager1"
+          - "node.hostname!=manager2"
     environment:
       PGADMIN_DEFAULT_EMAIL: target@targetso.com
       PGADMIN_DEFAULT_PASSWORD: target
-#      - PGADMIN_CONFIG_WTF_CSRF_CHECK_DEFAULT: False
+      PGADMIN_CONFIG_WTF_CSRF_CHECK_DEFAULT: False
     ports:
       - "8080:80"
     networks:
