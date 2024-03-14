@@ -1,5 +1,6 @@
-# Repositório Docker Compose da atividade desafio final do treinamento
+# Repositório Docker Compose
 
+Este repositório contém o arquivo Docker Compose referente ao desafio final do treinamento em um ambiente Docker Swarm.
 ### 1. docker-compose.yml
 
 Este arquivo Docker Compose inclui a configuração para os bancos de dados e aplicações.
