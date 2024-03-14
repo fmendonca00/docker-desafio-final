@@ -19,6 +19,7 @@ services:
       - postgis_data:/var/lib/postgresql/data/
     networks:
       - net-pgadmin
+      - net-nginx
   
   pgadmin:
     image: dpage/pgadmin4
@@ -32,9 +33,9 @@ services:
     environment:
       - PGADMIN_DEFAULT_EMAIL=felipe.araujo@targetso.com
       - PGADMIN_DEFAULT_PASSWORD=Target2024
-      - PGADMIN_CONFIG_WTF_CSRF_CHECK_DEFAULT=False
+#      - PGADMIN_CONFIG_WTF_CSRF_CHECK_DEFAULT=False
     ports:
-      - "80:80"
+      - "8080:80"
     networks:
       - net-pgadmin
       - traefik-pg
@@ -49,7 +50,7 @@ services:
         constraints:
           - "node.role==manager"
     ports:
-      - "8080:80"
+      - "8081:80"
     networks:
       - net-nginx
       - traefik-nginx
@@ -64,7 +65,7 @@ services:
         constraints:
           - "node.role==manager"
     ports:
-      - "8081:80"
+      - "8082:80"
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock"
     networks:
