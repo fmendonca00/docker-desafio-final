@@ -34,8 +34,8 @@ services:
     ports:
       - "80:80"
     networks:
-    - net-pgadmin
-    - traefik-pg
+      - net-pgadmin
+      - traefik-pg
     depends_on:
       - postgres
 
