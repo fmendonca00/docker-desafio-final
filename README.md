@@ -1,7 +1,8 @@
 # Repositório Docker Compose
 
 Este repositório contém o arquivo Docker Compose referente ao desafio final do treinamento em um ambiente Docker Swarm.
-### 1. docker-compose.yml
+
+## 1. docker-compose.yml
 
 Este arquivo Docker Compose inclui a configuração para os bancos de dados e aplicações.
 
@@ -16,7 +17,7 @@ Para iniciar a plataforma, utilize o seguinte comando:
 docker stack deploy -c docker-compose.yml app
 ```
 
-#### 1.2 Comandos utilizados durante esta atividade
+### 1.2 Comandos utilizados durante esta atividade
 
 Recuperando o código-fonte do GIT:
 

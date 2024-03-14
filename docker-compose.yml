@@ -6,10 +6,10 @@ services:
   postgres:
     image: "postgres:latest"
     deploy:
-      replicas: 2
+#      replicas: 2
       placement:
         constraints:
-          - "node.role==worker"
+          - "node.role==worker1"
     environment:
       POSTGRES_DB: app
       POSTGRES_USER: target
@@ -22,11 +22,12 @@ services:
   pgadmin:
     image: dpage/pgadmin4
     deploy:
-      replicas: 3
+#      replicas: 3
       placement:
         constraints:
-          - "node.hostname!=manager1"
-          - "node.hostname!=manager2"
+          - "node.role==worker1"
+#          - "node.hostname!=manager1"
+#          - "node.hostname!=manager2"
     environment:
       - PGADMIN_DEFAULT_EMAIL=felipe.araujo@targetso.com
       - PGADMIN_DEFAULT_PASSWORD=Target2024
