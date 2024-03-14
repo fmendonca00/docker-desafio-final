@@ -69,4 +69,5 @@ docker stack ls
 docker node ls
 docker network ls
 docker node ps $(docker node ls -q)
+docker service ps app_nginx
 ```
