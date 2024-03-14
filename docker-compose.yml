@@ -31,8 +31,8 @@ services:
 #          - "node.hostname!=manager1"
 #          - "node.hostname!=manager2"
     environment:
-      PGADMIN_DEFAULT_EMAIL: felipe.araujo@targetso.com
-      PGADMIN_DEFAULT_PASSWORD: Target2024
+      PGADMIN_DEFAULT_EMAIL: target@targetso.com
+      PGADMIN_DEFAULT_PASSWORD: target
 #      - PGADMIN_CONFIG_WTF_CSRF_CHECK_DEFAULT: False
     ports:
       - "8080:80"
