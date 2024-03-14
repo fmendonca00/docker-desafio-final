@@ -26,6 +26,7 @@ git clone https://github.com/fmendonca00/docker-desafio-final.git
 Para iniciar a plataforma:
 
 ```bash
+cd docker-desafio-final/
 docker stack deploy -c docker-compose.yml app
 ```
 
@@ -47,4 +48,24 @@ Atualizar o repositório local e posteriormente executar novo deploy da platafor
 
 ```bash
 git pull
+```
+
+Analise dos logs da plataforma:
+
+```bash
+docker service ls
+docker service logs -f app_pgadmin
+docker service logs -f app_postgres
+docker service logs -f app_nginx
+docker service logs -f app_traefik
+```
+
+Analise do ambiente:
+
+```bash
+docker service ls
+docker stack ls
+docker node ls
+docker network ls
+docker node ps $(docker node ls -q)
 ```
