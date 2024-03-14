@@ -30,6 +30,7 @@ services:
     environment:
       - PGADMIN_DEFAULT_EMAIL=felipe.araujo@targetso.com
       - PGADMIN_DEFAULT_PASSWORD=Target2024
+      - PGADMIN_CONFIG_WTF_CSRF_CHECK_DEFAULT=False
     ports:
       - "80:80"
     networks:
