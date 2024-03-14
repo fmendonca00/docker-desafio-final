@@ -34,6 +34,7 @@ services:
       - "80:80"
     networks:
     - net-pgadmin
+    - traefik-pg
     depends_on:
       - postgres
 
@@ -45,14 +46,34 @@ services:
         constraints:
           - "node.role==manager"
     ports:
-      - 8080:80
+      - "8080:80"
     networks:
       - net-nginx
+      - traefik-nginx
     depends_on:
       - postgres
+
+  traefik:
+    image: traefik:latest
+    deploy:
+      replicas: 3
+      placement:
+        constraints:
+          - "node.role==manager"
+    ports:
+      - "8081:80"
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+    networks:
+      - traefik-nginx
+      - traefik-pg
 
 networks:
   net-pgadmin:
     driver: overlay
   net-nginx:
+    driver: overlay
+  traefik-nginx:
+    driver: overlay
+  traefik-pg:
     driver: overlay
